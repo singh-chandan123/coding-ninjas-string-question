@@ -1,0 +1,45 @@
+//examples
+Sample Input 1:
+3
+abcde
+coding
+hello1
+Sample Output 1:
+edcba
+gnidoc
+1olleh
+
+//main code
+
+#include <bits/stdc++.h> 
+string reverseString(string str)
+{
+	// Write your code here.
+	// int len=str.length();
+	// int i=0;
+	// int j=len-1;
+	// while(i<j){
+	// 	swap(str[i],str[j]);
+	// 	i++;
+	// 	j--;
+	// }
+	// return str;
+
+//using stack
+stack<int>s;
+for(int i=0;i<str.length();i++){
+	char c=str[i];
+s.push(c);
+
+}
+string st="";
+//nikalo sare element ko jab tak stack khali na ho jaye
+while(!s.empty()){
+char top=s.top();
+s.pop();
+st.push_back(top);
+
+}
+return st;	
+}
+
