@@ -1,0 +1,55 @@
+//examples
+Sample Input 1:
+abcde
+baedc
+Sample Output 1:
+true
+Sample Input 2:
+abc
+cbd
+Sample Output 2:
+false
+
+//main code
+
+#include <bits/stdc++.h> 
+#include <iostream>
+#include <cstring>
+using namespace std;
+bool compare(int count[],int count1[]){
+    for(int i=0;i<26;i++){
+        if(count[i]!=count1[i]){
+            return false;
+        }
+    }
+    return true;
+}
+bool isPermutation(char input1[], char input2[]) {
+int len1=strlen(input1);
+int len2=strlen(input2);
+int count[26]={0};
+int count1[26]={0};
+//storing the count of input1
+for(int i=0;i<len1;i++){
+char c=input1[i];
+int num=c-'a';
+count[num]++;
+}
+ //storing the count of input2
+for(int i=0;i<len2;i++){
+char c=input2[i];
+int num=c-'a';
+count1[num]++;
+}
+//compare the count if they equal then return true else return false
+bool ans=  compare(count ,count1); 
+return ans;
+}
+
+int main() {
+    int size = 1e6;
+    char str1[size];
+    char str2[size];
+    cin >> str1 >> str2;
+    cout << (isPermutation(str1, str2) ? "true" : "false");
+}
