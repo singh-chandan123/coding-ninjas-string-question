@@ -1,0 +1,44 @@
+/* aaabbccdsa
+Sample Output 1:
+a3b2c2dsa
+Explanation For Sample Output 1:
+In the given string 'a' is repeated 3 times, 'b' is repeated 2 times, 'c' is repeated 2 times and 'd', 's' and 'a' and occuring 1 time hence no compression for last 3 characters.
+Sample Input 2:
+aaabbcddeeeee
+Sample Output 2:
+a3b2cd2e5
+Explanation For Sample Output 2:
+In the given string 'a' is repeated 3 times, 'b' is repeated 2 times, 'c' is occuring single time, 'd' is repeating 2 times and 'e' is repeating 5times. *\
+
+
+//main code
+
+
+# include<bits/stdc++.h>
+string getCompressedString(string &input) {
+  int n=input.size();
+  string s="";
+  for(int i=0;i<n-1;i++){
+      int count=1;
+      for(int j=i+1;j<n;j++){
+          if(input[i]==input[j]){
+              i++;
+              count++;
+          }
+          else{
+              break;
+          }
+      }
+      //print 
+      s.push_back(input[i]);
+      //check if they are greater than 1 then use num
+      if(count>1){
+          s.push_back(count+'0');
+      }
+  }
+  //last case in case last two charcter are different so we have i which is unreachable in last character
+  if(input[n-1]!=input[n-2]){
+      s.push_back(input[n-1]);
+  }
+  return s;
+}
