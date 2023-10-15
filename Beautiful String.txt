@@ -1,0 +1,78 @@
+//examples
+Sample Input 1 :
+2
+0000
+1010
+Sample Output 1 :
+2
+0
+Explanation of Sample Input 1 :
+For the first test case:
+The two beautiful strings that can be formed from the given ‘STR’ 
+are “1010” and “0101”. Ninja can transform ‘STR’ to “1010” by 
+performing the following operations:
+Replace ‘0’ at index 0 by ‘1’.
+Replace ‘0’ at index 2 by ‘1’.
+
+Ninja can transform ‘STR’ to “0101” by performing the following 
+operations:
+Replace ‘0' at index 1 by ‘1’.
+Replace ‘0’ at index 3 by ‘1’.
+
+The minimum number of operations in transforming ‘STR’ to either of the two beautiful strings is 2.
+
+For the second test case:
+Given ‘STR’ is already beautiful so the minimum number of operations required is 0.
+
+
+//main code
+
+# include<bits/stdc++.h>
+//generate
+string generate(string str,int n,int i){
+		string s="";
+	if(n==0){
+		return s;
+	}
+
+if(i==0){
+	s.push_back('0');
+	n--;
+}
+else{
+	s.push_back('1');
+	n--;
+}
+while(n!=0){
+	if(s[s.size()-1]=='0'){
+		s.push_back('1');
+	}
+	else{
+		s.push_back('0');
+	}
+	n--;
+}
+
+}
+//difference
+int difference(string str,string g1,int n){
+	int count=0;
+	for(int i=0;i<n;i++){
+		if(str[i]!=g1[i]){
+count++;
+		}
+	}
+	return count;
+}
+
+int makeBeautiful(string str) {
+	int n=str.length();
+	//phle suru m zero wale ki string 
+string g1=generate(str,n,0);
+int diff1=difference(str,g1,n);
+
+string g2=generate(str,n,1);
+int diff2=difference(str,g2,n);
+return min(diff1,diff2);
+
+}
